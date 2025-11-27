@@ -1,4 +1,4 @@
-class lift_sequencer extends uvm_sequencer;
+class lift_sequencer extends uvm_sequencer#(lift_sequence_item);
     /* About lift Sequencer : */
 
     /* Factory Registration */
