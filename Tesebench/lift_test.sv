@@ -6,6 +6,7 @@ class lift_test extends uvm_test;
 
     /* Handle Declearation */
     lift_environment env_h;
+    lift_sequence seq_h;
 
     /* NEw Function  */
     function new(string name = "lift_test", uvm_component parent = null );
@@ -43,6 +44,10 @@ class lift_test extends uvm_test;
     task run_phase(uvm_phase phase);
         super.run_phase(phase);
         `uvm_info(get_type_name(),"RUN PHASE",UVM_NONE)
+        phase.raise_objection(this);
+        seq_h = lift_sequence::type_id::create("seq_h",this);
+        seq_h.start(env_h.agt_h.seqr_h);
+        phase.drop_objection(this);
     endtask
 
     /* Extract Phase */
